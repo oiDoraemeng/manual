@@ -1,30 +1,30 @@
 <template>
   <main class="page">
+    <slot name="top"/>
+    <Content class="theme-default-content custom-content"/>
 
-              <Content class="theme-default-content custom-content" />
-
-              <PageEdit class="theme-default-content custom-content"/>
-              <!--      <div class="option-box-toc-fixed">-->
-              <!--         -->
-              <!--      </div>-->
+    <PageEdit class="theme-default-content custom-content"/>
+    <!--      <div class="option-box-toc-fixed">-->
+    <!--         -->
+    <!--      </div>-->
 
 
-              <PageNav v-bind="{ sidebarItems }" />
+    <PageNav v-bind="{ sidebarItems }"/>
 
-<!--右边的目录-->
-<!--          <div class="toc-container-sidebar" ref="tocc">-->
-<!--              <div class="pos-box">-->
-<!--                  <div class="icon-arrow"></div>-->
-<!--                  <div class="scroll-box" style="max-height:86vh">-->
-<!--                      <div style="font-weight:bold;">{{pageSidebarItems[0].title}}</div>-->
-<!--                      <hr/>-->
-<!--                      <div class="toc-box">-->
-<!--                          <PageSidebarToc :depth="0" :items="pageSidebarItems" :sidebarDepth="6"/>-->
-<!--                      </div>-->
-<!--                  </div>-->
-<!--              </div>-->
-<!--          </div>-->
-
+    <!--右边的目录-->
+    <!--          <div class="toc-container-sidebar" ref="tocc">-->
+    <!--              <div class="pos-box">-->
+    <!--                  <div class="icon-arrow"></div>-->
+    <!--                  <div class="scroll-box" style="max-height:86vh">-->
+    <!--                      <div style="font-weight:bold;">{{pageSidebarItems[0].title}}</div>-->
+    <!--                      <hr/>-->
+    <!--                      <div class="toc-box">-->
+    <!--                          <PageSidebarToc :depth="0" :items="pageSidebarItems" :sidebarDepth="6"/>-->
+    <!--                      </div>-->
+    <!--                  </div>-->
+    <!--              </div>-->
+    <!--          </div>-->
+    <slot name="bottom"/>
   </main>
 </template>
 
@@ -32,11 +32,12 @@
 import PageEdit from '@theme/components/PageEdit.vue'
 import PageNav from '@theme/components/PageNav.vue'
 import PageSidebarToc from '@theme/components/PageSidebarToc.vue'
+
 export default {
-  components: { PageEdit, PageNav, PageSidebarToc },
+  components: {PageEdit, PageNav, PageSidebarToc},
   props: ['sidebarItems', 'pageSidebarItems'],
   mounted() {
-    console.log(this.$site,this, 'this.$site')
+    console.log(this.$site, this, 'this.$site')
   }
 }
 </script>
@@ -66,13 +67,12 @@ export default {
   align-items: center
 
 
-
-
 .content
   display flex
   justify-content space-around
   margin 0 auto
-  li, a , p, span
+
+  li, a, p, span
     word-wrap break-word
 
 .theme-default-content
@@ -80,74 +80,85 @@ export default {
 
 
 .theme-default-content:not(.custom) {
-    max-width: 992px
-    margin: 0 auto
-    padding: 2rem 2.5rem
+  max-width: 992px
+  margin: 0 auto
+  padding: 2rem 2.5rem
 }
 
 .page
   display block
   position relative
-  //height 100vw
-  //width 100vw
-  //overflow scroll
+
+//height 100vw
+//width 100vw
+//overflow scroll
 .toc-container-sidebar
   order 2
   width 100%
   flex-grow 1
   //padding-left 32px
-  display  block
-  position  relative
+  display block
+  position relative
   color $textColor
   //  calc(100vw - 460px)
-  top  80px
-  max-width  240px
+  top 80px
+  max-width 240px
   background transparent
-  margin-right  10px
-  margin-left  0
+  margin-right 10px
+  margin-left 0
+
   .on
-    display  block
+    display block
+
   .pos-box
-    position  fixed
-    padding  16px
+    position fixed
+    padding 16px
     top 80px
     height 100vh
     overflow-x hidden
     overflow-y auto
 
     .icon-arrow
-      position  relative
-      margin-left  -20px
+      position relative
+      margin-left -20px
+
     .scroll-box
-      overflow-x  hidden
-      overflow-y  hidden
+      overflow-x hidden
+      overflow-y hidden
+
       & > div first-child
         overflow-x scroll
-        white-space  nowrap
+        white-space nowrap
         text-overflow ellipsis
+
       hr
-        margin-top  0.5rem
+        margin-top 0.5rem
+
       .toc-box
         max-height 81vh
-        overflow-y  auto
-        overflow-x  hidden
-        width  238px
-        padding-right  16px
-        -webkit-box-sizing  border-box
-        box-sizing  border-box
+        overflow-y auto
+        overflow-x hidden
+        width 238px
+        padding-right 16px
+        -webkit-box-sizing border-box
+        box-sizing border-box
+
       & > ol
-        margin-top  -8px
+        margin-top -8px
+
         li
-          margin-top  8px
-          line-height  17px
-          text-align  left
-          overflow  auto
-          text-overflow  ellipsis
-          font-size  12px
-          white-space  nowrap
+          margin-top 8px
+          line-height 17px
+          text-align left
+          overflow auto
+          text-overflow ellipsis
+          font-size 12px
+          white-space nowrap
+
         .sub-box
-          margin-top  0
+          margin-top 0
+
         & > ol > li
-          padding-left  15px
+          padding-left 15px
 
 </style>

@@ -83,13 +83,16 @@ export default {
       return this.userNav
     },
 
+
     userLinks () {
       return (this.nav || []).map(link => {
+        console.log(link)
         return Object.assign(resolveNavLinkItem(link), {
           items: (link.items || []).map(resolveNavLinkItem)
         })
       })
     },
+
 
     repoLink () {
       const { repo } = this.$site.themeConfig
