@@ -1,0 +1,133 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var config_1 = require("vuepress/config");
+var navbar_1 = require("./navbar");
+var sidebar_1 = require("./sidebar");
+var footer_1 = require("./footer");
+var extraSideBar_1 = require("./extraSideBar");
+var author = "程序员鱼皮";
+var domain = "https://sincostan.tech/";
+var tags = ["程序员", "编程", "计算机"];
+exports.default = (0, config_1.defineConfig)({
+    host: "0.0.0.0",
+    port: 8080,
+    // 网站根路径
+    base: "/vuepress/",
+    lang: "zh-CN",
+    title: "使用手册",
+    description: "打造更具拓展性更普惠的人工智能软件平台，服务于生物科学研究及医学检测",
+    head: [
+        // 站点图标
+        ["link", { rel: "icon", href: "/favicon.ico" }],
+        // SEO
+        [
+            "meta",
+            {
+                name: "keywords",
+                content: "BioimageVision, deep learning, computer vision, image processing, medical image analysis, optimization, biomedical,  biomedical image processing, image recognition, image segmentation, medical image analysis,深度学习、计算机视觉、图像处理、医学图像分析,优化,生物图像处理, 图像识别, 图像分割,医学影像分析",
+            },
+        ],
+        // 百度统计
+        [
+            "script",
+            {},
+            "\n        var _hmt = _hmt || [];\n        (function() {\n          var hm = document.createElement(\"script\");\n          hm.src = \"https://hm.baidu.com/hm.js?2675818a983a3131404cee835018f016\";\n          var s = document.getElementsByTagName(\"script\")[0]; \n          s.parentNode.insertBefore(hm, s);\n        })();\n      ",
+        ],
+    ],
+    permalink: "/:slug",
+    // 监听文件变化，热更新
+    extraWatchFiles: [".vuepress/*.ts", ".vuepress/sidebars/*.ts"],
+    markdown: {
+        // 开启代码块的行号
+        lineNumbers: true,
+        // 支持 4 级以上的标题渲染
+        extractHeaders: ["h2", "h3", "h4", "h5", "h6"],
+    },
+    // @ts-ignore
+    plugins: [
+        ["@vuepress/back-to-top"],
+        // Google 分析
+        [
+            "@vuepress/google-analytics",
+            {
+                manual: "G-ZZZ4193J2X", // 补充自己的谷歌分析 ID，比如 UA-00000000-0
+            },
+        ],
+        ["@vuepress/medium-zoom"],
+        // https://github.com/lorisleiva/vuepress-plugin-seo
+        [
+            "seo",
+            {
+                siteTitle: function (_, $site) { return $site.title; },
+                title: function ($page) { return $page.title; },
+                description: function ($page) {
+                    return $page.frontmatter.description || $page.description;
+                },
+                author: function (_, $site) { return $site.themeConfig.author || author; },
+                tags: function ($page) { return $page.frontmatter.tags || tags; },
+                type: function ($page) { return "article"; },
+                url: function (_, $site, path) {
+                    return ($site.themeConfig.domain || domain || "") + path;
+                },
+                image: function ($page, $site) {
+                    return $page.frontmatter.image &&
+                        (($site.themeConfig.domain &&
+                            !$page.frontmatter.image.startsWith("http")) ||
+                            "") + $page.frontmatter.image;
+                },
+                publishedAt: function ($page) {
+                    return $page.frontmatter.date && new Date($page.frontmatter.date);
+                },
+                modifiedAt: function ($page) { return $page.lastUpdated && new Date($page.lastUpdated); },
+            },
+        ],
+        // https://github.com/ekoeryanto/vuepress-plugin-sitemap
+        [
+            "sitemap",
+            {
+                hostname: domain,
+            },
+        ],
+        // https://github.com/IOriens/vuepress-plugin-baidu-autopush
+        ["vuepress-plugin-baidu-autopush"],
+        // https://github.com/zq99299/vuepress-plugin/tree/master/vuepress-plugin-tags // 标签插件
+        ["vuepress-plugin-tags"],
+        // https://github.com/znicholasbrown/vuepress-plugin-code-copy
+        [
+            "vuepress-plugin-code-copy",
+            {
+                successText: "代码已复制",
+            },
+        ],
+        // https://github.com/webmasterish/vuepress-plugin-feed
+        [
+            "feed",
+            {
+                canonical_base: domain,
+                count: 10000,
+                // 需要自动推送的文档目录
+                posts_directories: [],
+            },
+        ],
+        // https://github.com/tolking/vuepress-plugin-img-lazy // 图片懒加载插件
+        ["img-lazy"],
+    ],
+    // 主题配置
+    themeConfig: {
+        logo: "/logo.png",
+        nav: navbar_1.default,
+        sidebar: sidebar_1.default,
+        lastUpdated: "最近更新",
+        // GitHub 仓库位置
+        repo: "",
+        docsBranch: "master",
+        // 编辑链接
+        editLinks: true,
+        editLinkText: "完善页面",
+        // @ts-ignore
+        // 底部版权信息
+        footer: footer_1.default,
+        // 额外右侧边栏
+        extraSideBar: extraSideBar_1.default,
+    },
+});
