@@ -12,7 +12,7 @@ export default defineConfig({
   host: "0.0.0.0",
   port: 8080,
   // 网站根路径
-  base: "/vuepress/",
+  base: "/manual/",
   lang: "zh-CN",
   title: "使用手册",
   description: "打造更具拓展性更普惠的人工智能软件平台，服务于生物科学研究及医学检测",
