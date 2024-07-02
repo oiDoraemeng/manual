@@ -1,4 +1,5 @@
 import {SidebarConfig4Multiple} from "vuepress/config";
+import NeuroGPSSideBar from "./sidebars/NeuroGPSSideBar";
 import codeNavSideBar from "./sidebars/codeNavSideBar";
 import knowledgeSideBar from "./sidebars/knowledgeSideBar";
 import roadmapSideBar from "./sidebars/roadmapSideBar";
@@ -19,5 +20,6 @@ export default {
     // "/产品服务/": productSideBar,
     // "/关于我们/": ["", "个人经历"],
     // 降级，默认根据文章标题渲染侧边栏
+    "/NeuroGPS/": NeuroGPSSideBar,
     "/": "auto",
 } as SidebarConfig4Multiple;

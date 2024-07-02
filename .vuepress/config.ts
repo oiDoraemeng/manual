@@ -99,12 +99,12 @@ export default defineConfig({
     // https://github.com/zq99299/vuepress-plugin/tree/master/vuepress-plugin-tags // 标签插件
     ["vuepress-plugin-tags"],
     // https://github.com/znicholasbrown/vuepress-plugin-code-copy
-    [
-      "vuepress-plugin-code-copy",
-      {
-        successText: "代码已复制",
-      },
-    ],
+    // [
+    //   "vuepress-plugin-code-copy",
+    //   {
+    //     successText: "代码已复制",
+    //   },
+    // ],
     // https://github.com/webmasterish/vuepress-plugin-feed
     [
       "feed",
@@ -126,7 +126,7 @@ export default defineConfig({
     lastUpdated: "最近更新",
 
     // GitHub 仓库位置
-    repo: "/",
+    repo: "Quanlab-Bioimage/BioimageVision/tree/master",
     docsBranch: "master",
 
     // 编辑链接
@@ -137,6 +137,6 @@ export default defineConfig({
     // 底部版权信息
     footer,
     // 额外右侧边栏
-    extraSideBar,
+    //extraSideBar,
   },
 });

@@ -7,11 +7,11 @@ export default {
         {
             label: "联系我们",
         },
-        {
-            label: "全廷伟 ：quantingwei@hust.edu.cn",
-            // icon: "/icon/email.svg",
-            href: "mailto:quantingwei@hust.edu.cn",
-        },
+        // {
+        //     label: "全廷伟 ：quantingwei@hust.edu.cn",
+        //     // icon: "/icon/email.svg",
+        //     href: "mailto:quantingwei@hust.edu.cn",
+        // },
         {
             label: "郭沙沙 ：wfy@wfywh.com",
             // icon: "/icon/email.svg",

@@ -7,7 +7,7 @@ exports.default = [
     },
     {
         text: "NeuroVision",
-        link: '/NeuroVision/NeuroVision/'
+        link: '/NeuroVision/'
     },
     {
         text: "BloodVision",
