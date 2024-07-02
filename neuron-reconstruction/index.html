@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>神经元形态重建 | 使用手册</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/manual/favicon.ico">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?2675818a983a3131404cee835018f016";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+      </script>
+    <meta name="description" content="打造更具拓展性更普惠的人工智能软件平台，服务于生物科学研究及医学检测">
+    <meta property="article:modified_time" content="2024-07-02T07:50:14.000Z">
+    <meta property="og:site_name" content="使用手册">
+    <meta property="og:title" content="神经元形态重建">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sincostan.tech//neuron-reconstruction/">
+    <meta name="twitter:title" content="神经元形态重建">
+    <meta name="twitter:url" content="https://sincostan.tech//neuron-reconstruction/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="程序员, 编程, 计算机">
+    <meta property="article:tag" content="程序员">
+    <meta name="keywords" content="BioimageVision, deep learning, computer vision, image processing, medical image analysis, optimization, biomedical,  biomedical image processing, image recognition, image segmentation, medical image analysis,深度学习、计算机视觉、图像处理、医学图像分析,优化,生物图像处理, 图像识别, 图像分割,医学影像分析">
+    
+    <link rel="preload" href="/manual/assets/css/0.styles.0e37c980.css" as="style"><link rel="preload" href="/manual/assets/js/app.2eb896ed.js" as="script"><link rel="preload" href="/manual/assets/js/3.f76fbda7.js" as="script"><link rel="preload" href="/manual/assets/js/29.e23c7790.js" as="script"><link rel="preload" href="/manual/assets/js/1.09c696ce.js" as="script"><link rel="prefetch" href="/manual/assets/js/11.2b8db48d.js"><link rel="prefetch" href="/manual/assets/js/12.7df5f514.js"><link rel="prefetch" href="/manual/assets/js/13.5c2f260d.js"><link rel="prefetch" href="/manual/assets/js/14.a73eb937.js"><link rel="prefetch" href="/manual/assets/js/15.93b1e93b.js"><link rel="prefetch" href="/manual/assets/js/16.83f3e22e.js"><link rel="prefetch" href="/manual/assets/js/17.5b86811c.js"><link rel="prefetch" href="/manual/assets/js/18.75a19e82.js"><link rel="prefetch" href="/manual/assets/js/19.07e9532f.js"><link rel="prefetch" href="/manual/assets/js/2.5bc6e86e.js"><link rel="prefetch" href="/manual/assets/js/20.a4a90349.js"><link rel="prefetch" href="/manual/assets/js/21.7dab93bf.js"><link rel="prefetch" href="/manual/assets/js/22.7deb95d0.js"><link rel="prefetch" href="/manual/assets/js/23.0336efab.js"><link rel="prefetch" href="/manual/assets/js/24.ed2e3110.js"><link rel="prefetch" href="/manual/assets/js/25.746bc6b2.js"><link rel="prefetch" href="/manual/assets/js/26.07c76b0e.js"><link rel="prefetch" href="/manual/assets/js/27.dbf70d75.js"><link rel="prefetch" href="/manual/assets/js/28.a9d5d90a.js"><link rel="prefetch" href="/manual/assets/js/30.92248b38.js"><link rel="prefetch" href="/manual/assets/js/31.64439142.js"><link rel="prefetch" href="/manual/assets/js/32.cb921769.js"><link rel="prefetch" href="/manual/assets/js/4.f3056a7b.js"><link rel="prefetch" href="/manual/assets/js/5.33d89342.js"><link rel="prefetch" href="/manual/assets/js/6.d2826533.js"><link rel="prefetch" href="/manual/assets/js/7.020f50e8.js"><link rel="prefetch" href="/manual/assets/js/8.28c5a837.js"><link rel="prefetch" href="/manual/assets/js/vendors~docsearch.0464d051.js">
+    <link rel="stylesheet" href="/manual/assets/css/0.styles.0e37c980.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/manual/" class="home-link router-link-active"><img src="/manual/logo.png" alt="使用手册" class="logo"> <span class="site-name can-hide">使用手册</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="http://192.168.1.10:5000 " target="_blank" rel="noopener noreferrer" class="nav-link external">
+  公司网站
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/manual/NeuroGPS/" class="nav-link">
+  NeuroGPS
+</a></div><div class="nav-item"><a href="/manual/VascuGPS/" class="nav-link">
+  VascuGPS
+</a></div><div class="nav-item"><a href="/manual/MedSee/" class="nav-link">
+  MedSee
+</a></div> <a href="https://github.com/Quanlab-Bioimage/BioimageVision/tree/master" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="http://192.168.1.10:5000 " target="_blank" rel="noopener noreferrer" class="nav-link external">
+  公司网站
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="/manual/NeuroGPS/" class="nav-link">
+  NeuroGPS
+</a></div><div class="nav-item"><a href="/manual/VascuGPS/" class="nav-link">
+  VascuGPS
+</a></div><div class="nav-item"><a href="/manual/MedSee/" class="nav-link">
+  MedSee
+</a></div> <a href="https://github.com/Quanlab-Bioimage/BioimageVision/tree/master" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/manual/neurogps/" class="sidebar-link">NeuroGPS Plus</a></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>基本功能</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/manual/neuron-reconstruction/" aria-current="page" class="active sidebar-link">神经元形态重建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#神经元结构" class="sidebar-link">神经元结构</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#软件追踪原理" class="sidebar-link">软件追踪原理</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#启动软件-目前仅支持windows系统" class="sidebar-link">启动软件（目前仅支持windows系统）</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#一、修订模式" class="sidebar-link">一、修订模式</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#二、确定胞体位置" class="sidebar-link">二、确定胞体位置</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#三、纤维调图" class="sidebar-link">三、纤维调图</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#四、修订操作-裁剪纤维、合并纤维" class="sidebar-link">四、修订操作（裁剪纤维、合并纤维）</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#五、标记疑问点" class="sidebar-link">五、标记疑问点</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#六、感兴趣区域设置-背景框" class="sidebar-link">六、感兴趣区域设置（背景框）</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#七、画点模式" class="sidebar-link">七、画点模式</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#八、2d模式" class="sidebar-link">八、2D模式</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#九、保存" class="sidebar-link">九、保存</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#十、快捷键" class="sidebar-link">十、快捷键</a></li><li class="sidebar-sub-header"><a href="/manual/neuron-reconstruction/#十一、鼠标操作" class="sidebar-link">十一、鼠标操作</a></li></ul></li><li><a href="/manual/cell-localization/" class="sidebar-link">细胞定位</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content custom-content content__default"><h1 id="神经元形态重建"><a href="#神经元形态重建" class="header-anchor">#</a> 神经元形态重建</h1> <blockquote><p>生物与医学图像处理工具</p></blockquote> <blockquote><p>本站地址：https://sincostan.tech/manual</p></blockquote> <h2 id="神经元结构"><a href="#神经元结构" class="header-anchor">#</a> <strong>神经元结构</strong></h2> <p>神经元由胞体+树突+轴突组成；我们需要确认胞体位置后，追踪树突、轴突，最终得到一条完整的神经元。树突有很多条且较短，轴突从胞体出发且只有一条，但很长且有很多分支。
+<img alt="" data-src="/manual/image/Neuro/image001.png" loading="lazy" class="lazy"></p> <h2 id="软件追踪原理"><a href="#软件追踪原理" class="header-anchor">#</a> <strong>软件追踪原理</strong></h2> <p>将算法生成的骨架，也就是通过图像自动识别出来结果，如左图所示（在软件里面称为“背景”），通过合并、剪裁等操作最终修订成一条完整的神经元，一条神经元只有一个胞体如右图所示。
+<img alt="" data-src="/manual/image/Neuro/image003.png" loading="lazy" class="lazy"><img alt="" data-src="/manual/image/Neuro/image005.png" loading="lazy" class="lazy"></p> <h2 id="启动软件-目前仅支持windows系统"><a href="#启动软件-目前仅支持windows系统" class="header-anchor">#</a> <strong>启动软件（目前仅支持windows系统）</strong></h2> <p>解压后，双击文件夹中的“BioimageVision.exe”。
+<img alt="" data-src="/manual/image/Neuro/image007.png" loading="lazy" class="lazy"></p> <h2 id="一、修订模式"><a href="#一、修订模式" class="header-anchor">#</a> <strong>一、修订模式</strong></h2> <div class="language- extra-class"><pre><code>1、点击下图红色箭头，进入修订模式；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image009.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、点击File,再点击open
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image011.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>3、第一次进入只用选择Config Path（大数据制作的数据格式）和Swc Config（算法生成的骨架）的路径。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image013.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image015.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image017.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image019.png" loading="lazy" class="lazy"></p> <h2 id="二、确定胞体位置"><a href="#二、确定胞体位置" class="header-anchor">#</a> <strong>二、确定胞体位置</strong></h2> <div class="language- extra-class"><pre><code>1、按下”F1”，弹出菜单栏，如下图所示，选择“Choose Soma”。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image021.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、输入胞体的坐标（这个会提前给定）；Radius代表可视化区域显示的大小。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image023.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>3、点击Back Img隐藏整个图像的背景；将level调为0；点击apply;
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image025.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>4、调节灰度；按“G”会自动推荐一个灰度范围，人工可在此基础上调节，可以在灰度直方图中拉动；也可在Min和Max中输入灰度值；
+（最大灰度值越大图像越暗，最小灰度值越大图像轮廓越清晰，请根据实际情况调节灰度以达到最优可视化效果）
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image027.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image029.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image031.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image033.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image035.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>5、设置主分支按“v”，进入画点模式：在胞体上点击后胞体上将出现一个点，按下“s”，保存该点（如下图左图所示）；鼠标选中该点，按“Y”，将该点设为主分支（如下图右图所示)
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image037.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image039.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>6、连接轴突树突，将胞体上的分支都连接到胞体上（按下Alt，同时鼠标右键选中主分支的点和需要连接的背景点，松下Alt合并成功），蓝色为前景，在蓝色上进行追踪。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image041.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image043.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>7、确定完胞体的分支后，开始进行追踪。
+
+	1) 合并：Alt+鼠标左键选中二个点。选中后松下Alt;
+
+	2) 打断：Alt+鼠标左键选中一个点。选中后送下Alt;
+一条分支追踪完成后，按“3”，将会调出一个框用于确认后续是否没有追踪完；再按“6”，确认这条分支追踪完成，再按“4”切换到下一条分支。
+</code></pre></div><p>All:所有的分支</p> <p>Todo:还未检查的分支；</p> <p>Checked:已检查的分支</p> <p>Difficult:手动标记的点
+<img alt="" data-src="/manual/image/Neuro/image045.png" loading="lazy" class="lazy"></p> <h2 id="三、纤维调图"><a href="#三、纤维调图" class="header-anchor">#</a> <strong>三、纤维调图</strong></h2> <div class="language- extra-class"><pre><code>1、“Ctrl+鼠标左键”单击前景纤维；调出对应的图像背景；用来确认是否是一根神经元。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image047.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、”Shift+鼠标左键“单击其他的背景纤维追加调图；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image049.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>3、点击“空格”键自动加载纤维图像；遇到分叉时，分支变为绿色；	
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image051.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>4、点击ctrl+“空格”键自动加载下一段纤维图像；不需要鼠标进行拖动。
+</code></pre></div><h2 id="四、修订操作-裁剪纤维、合并纤维"><a href="#四、修订操作-裁剪纤维、合并纤维" class="header-anchor">#</a> <strong>四、修订操作（裁剪纤维、合并纤维）</strong></h2> <div class="language- extra-class"><pre><code>1、若确认是一根神经元上的纤维；就将其合并；“Alt+鼠标左键（选中二个点）”，松下Alt后，合并纤维（合并后纤维从背景变成了前景）；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image053.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、合并后发现一根神经元上有多条纤维；将多余的部分剪裁掉，“Alt+鼠标左键（选中一个点）”，松下Alt，剪断纤维，蓝色的那一部分将自动被删除（若不想被删除，ctrl+z撤销删除操作）
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image055.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image057.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>3、删除多余的神经元，鼠标左键单击要选中的神经元，如下图所示，神经元变为红色，按“D”将会删除该条神经元。“Ctrl+Z”撤销该条删除操作。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image059.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>4、若背景纤维和前景纤维中间重合过长，不能直接合并；需先将背景纤维剪裁一部分在与前景纤维合并。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image061.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>5、背景纤维与前景纤维合并时，若重合超过30个点将会有如下提示。点击是，将自动把前景和背景纤维重合的点删除。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image063.png" loading="lazy" class="lazy"></p> <p>注：背景纤维是由算法自动重建出来的，需要把背景纤维加到前景纤维中，最终合成一条完整的神经元，一条神经元只有一个胞体。</p> <h2 id="五、标记疑问点"><a href="#五、标记疑问点" class="header-anchor">#</a> <strong>五、标记疑问点</strong></h2> <div class="language- extra-class"><pre><code>1、遇到不确定的地方点击“ctrl+w”记录；右键可对该点进行删除，备注操作。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image065.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、回到标记点操作，点击左侧列表中的标记点，鼠标滚轮向前滑动，将会自动定位到标记点位置，点击“空格”加载图像是图像更清晰。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image067.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image069.png" loading="lazy" class="lazy"></p> <h2 id="六、感兴趣区域设置-背景框"><a href="#六、感兴趣区域设置-背景框" class="header-anchor">#</a> <strong>六、感兴趣区域设置（背景框）</strong></h2> <div class="language- extra-class"><pre><code>1、感兴趣区域的设置是更清晰的看到图像，直接输入“感兴趣区域坐标”或者鼠标右键点击“Interact” 选择感兴趣区域。
+
+注：显示感兴趣区域需将整个图像背景隐藏，将Back Img隐藏；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image071.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、见下图中红色箭头，鼠标左键单击小球后长按然后拖动小球即可调整感兴趣区域。点击“Apply”确认已选择的区域（如下图矩形框）。再次点击“Interact”可隐藏感兴趣区域框（快捷键:B）。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image073.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>注：当选择区域过大时，level值过小时，会出现显存不够的情况，此刻会有小窗口提醒，如图
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image075.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>3、 Fitbox（快捷键：Ctrl+F）自动调出对应的感兴趣区域。根据当前纤维调图出来的图像。无法准确判断纤维的走向。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image077.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>4、 在需要依赖更多图像背景进行判断时，点击该点后，使用快捷键Ctrl+F；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image079.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>5、 若Ctrl+f调出来的图像不足以判断时，shift+f追加调图像；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image081.png" loading="lazy" class="lazy">
+1）选择一个点，Shift+F调出背景图像；在选择其他点，Shift+F追加调出背景图像。</p> <div class="language- extra-class"><pre><code>	2）shift+左侧apply；该框的图像背景将会显示。
+</code></pre></div><h2 id="七、画点模式"><a href="#七、画点模式" class="header-anchor">#</a> <strong>七、画点模式</strong></h2> <div class="language- extra-class"><pre><code>1、若图像没有对应的纤维，需要手动追；点击“V”进入画点模式；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image083.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、点击“V”后，红色线上的最后一个点变蓝（若想在其他线上画点，直接点击想画点的位置即可，对应的点也会变蓝）。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image085.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>3、左键单击需要追踪的位置，直接点到对应的图像上面（红色箭头代表点击的四个点，中间的点为算法自动填充）；Ctrl+Z 撤销上一步。”Z”一个点一个点撤回，若需要继续向前画点，点击空格，自动加载前面的图像，可继续画点。
+4、 若画点模式完成后：
+
+   1）前方有对应的背景纤维，直接按“2”即可连接；将自动退出画点模式。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image087.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>   2）点击“S”进行保存以及退出画点模式
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image089.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>5、画点选择方式（按C切换）
+
+   1）extremum：这个是极大值投影，遇到图像后面还有一层图像时使用，就不会打到下面一层上，只会打到表面的图像上。
+
+   2）Maximum：最大值投影，遇到弱信号，后面一层也没有数据时使用。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image091.png" loading="lazy" class="lazy"></p> <h2 id="八、2d模式"><a href="#八、2d模式" class="header-anchor">#</a> <strong>八、2D模式</strong></h2> <div class="language- extra-class"><pre><code>1、先调出Fit Box（Ctrl+F）,可以在此基础上Shift+F进行追加图像框，，如下图选择一个点按下Ctrl+F，进入2D模式后将以“选择的点”为起始点。；
+
+注：2D模式的图像范围将为调出的图像框范围；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image093.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、滑动鼠标滚轮，找到第一个点
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image095.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>3、在2D模式下根据流向判断神经元的走向，鼠标左键点击，将会出现一个蓝色的点，对应的3D模式下也会显示。撤回已经标记的点（Ctrl+Z）
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image097.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>4、结束2D模式。关闭2D窗口后，3D界面将会显示在2D模式下追踪的神经元；删除该条神经元（左键单机后，按“D”删除）；和其他分支合并（Alt+鼠标左键（选中二个点））
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image099.png" loading="lazy" class="lazy"></p> <h2 id="九、保存"><a href="#九、保存" class="header-anchor">#</a> <strong>九、保存</strong></h2> <div class="language- extra-class"><pre><code>保证前景纤维只有一种颜色（只有一条神经元，并且该条神经元已设置为主分支）
+
+1、保存当前状态:下一次打开可接着追踪。标记的分叉点和疑问点都会保存。
+
+   注、追踪过程中尽量经常保存，软件目前不太稳定，下次只用输入”state”的路径；
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image101.png" loading="lazy" class="lazy"> <img alt="" data-src="/manual/image/Neuro/image103.png" loading="lazy" class="lazy"></p> <div class="language- extra-class"><pre><code>2、保存swc；在可视化区域单击鼠标右键，点击Save Ctrl+S（快捷键“Ctrl+S“）；下次打开将是一整条纤维；没有保存相关标记点及上一次追踪的状态。
+
+   注、整条神经元追踪完之后可使用“Ctrl+S”保存成swc，下次打开需要输入swc的位置。
+</code></pre></div><p><img alt="" data-src="/manual/image/Neuro/image105.png" loading="lazy" class="lazy"></p> <h2 id="十、快捷键"><a href="#十、快捷键" class="header-anchor">#</a> <strong>十、快捷键</strong></h2> <div class="language- extra-class"><pre><code>1、调图
+	1） Ctrl+鼠标左键（选中一个点）：加载纤维的背景图像
+
+	2） Shift+鼠标左键（选中一个点）：在已加载纤维的背景图像上追加背景图像
+
+	3） 空格:加载纤维的背景图像；
+	
+	4） Ctrl+空格：自动加载纤维的背景图像
+
+	5） Ctrl+F:fitBox快捷键，调出感兴趣区域
+
+	6） Shift+F:追加调框
+
+	7） B：调节感兴趣区域/调节完隐藏
+
+	8） Ctrl+A：隐藏/显示感兴趣区域
+
+2、画点模式（点击v进入画点模式下）
+	1)  Ctrl+Z：撤销上一个点
+	
+	2)  Z：撤销上一次画点操作
+	 
+	3)  Ctrl+S：保存分支并继续画点
+
+	4)  S：保存分支，并退出画点模式
+
+3、删除
+	1） D：删除选中的前景/背景
+
+	2） Alt+鼠标左键（选中一个点）：剪断纤维；蓝色的那一部分将被删除
+
+4、修改
+	1） Ctrl+Z：撤销
+
+	2） Alt+鼠标左键（选中二个点）：合并纤维
+
+	3） CapsLK：选择一条分支上的两个点自动修改
+
+5、保存
+	1） Ctrl+S：保存swc文件
+	
+	2） Ctrl+Shift+S：保存state文件
+
+6、标记
+	1） Ctrl+W:标记有疑问点
+
+	2） R：隐藏/显示标记箭头
+
+7、纤维操作
+	1） A：隐藏/显示纤维前景
+
+	2） E：隐藏/显示纤维背景
+
+	3） F：聚焦（鼠标左键点击一个点，按下F即可围绕该点旋转）
+
+	4） Z：重置纤维状态
+
+	5） Ctrl+X：隐藏/显示纤维调图出来的背景图像。
+
+	6） I：将选中背景插入前景
+
+	7） X：显示/隐藏父分支
+
+	8） Q：切换到下一条
+
+	9） Y：将选中分支设置为主分支
+</code></pre></div><h2 id="十一、鼠标操作"><a href="#十一、鼠标操作" class="header-anchor">#</a> <strong>十一、鼠标操作</strong></h2> <p>1、平移图像：按下鼠标中间来移动鼠标；</p> <p>2、放大图像：滚动鼠标滚轮向前；</p> <p>3、缩小图像：滚动鼠标滚轮向后；</p> <p>4、旋转图像：固定左键移动鼠标；</p></div> <footer class="page-edit theme-default-content custom-content"><div class="edit-link"><a href="https://github.com/Quanlab-Bioimage/BioimageVision/tree/master/edit/master/NeuroGPS/Neuron_Reconstruction.md" target="_blank" rel="noopener noreferrer">完善页面</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">最近更新:</span> <span class="time">7/2/2024, 7:50:14 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/manual/neurogps/" class="prev">
+        NeuroGPS Plus
+      </a></span> <span class="next"><a href="/manual/cell-localization/">
+        细胞定位
+      </a>
+      →
+    </span></p></div>  <main class="footer"> <div class="copy-right"><a><span class="name"> 望飞宇(武汉)科技有限公司   |     </span></a> <a target="_blank" rel="noreferrer">
+          
+        </a></div></main></main> <aside class="page-sidebar"> <div class="page-side-toolbar"></div>  </aside></div><div class="global-ui"><!----></div></div>
+    <script src="/manual/assets/js/app.2eb896ed.js" defer></script><script src="/manual/assets/js/3.f76fbda7.js" defer></script><script src="/manual/assets/js/29.e23c7790.js" defer></script><script src="/manual/assets/js/1.09c696ce.js" defer></script>
+  </body>
+</html>
